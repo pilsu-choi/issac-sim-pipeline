@@ -1,0 +1,47 @@
+[project]
+name = "issac-sim-tutorial"
+version = "0.1.0"
+description = "Humanoid egocentric perception synthetic data MLOps project"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "gradio",
+    "mlflow",
+    "numpy",
+    "opencv-python",
+    "pillow",
+    "prometheus-client",
+    "python-multipart",
+    "pyyaml",
+    "starlette",
+    "torch",
+    "torchvision",
+    "ultralytics",
+    "uvicorn",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+]
+
+[tool.uv]
+package = false
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu" },
+]
+torchvision = [
+    { index = "pytorch-cpu" },
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
