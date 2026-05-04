@@ -1,0 +1,42 @@
+project_name: humanoid-perception-synthetic-data-mlops
+dataset_root: data/synthetic/humanoid_egocentric_perception
+
+scene:
+  name: humanoid_egocentric_perception
+  num_frames: 200
+  image_width: 1280
+  image_height: 720
+  random_seed: 42
+
+classes:
+  - traffic_cone
+  - barrel
+  - crate
+  - shelf
+
+randomization:
+  camera:
+    enabled: true
+    viewpoint: humanoid_head
+    height_range: [1.35, 1.75]
+    forward_distance_range: [1.2, 4.0]
+    lateral_range: [-1.5, 1.5]
+    pitch_range: [-25, 10]
+    yaw_range: [-35, 35]
+  lighting:
+    enabled: true
+    intensity_range: [5000, 60000]
+  objects:
+    enabled: true
+    count_range: [3, 12]
+    position_range:
+      x: [-3.0, 3.0]
+      y: [-3.0, 3.0]
+      z: [0.0, 0.2]
+
+writer:
+  output_format: yolo
+  rgb: true
+  bounding_box_2d_tight: true
+  semantic_segmentation: true
+  depth: true
